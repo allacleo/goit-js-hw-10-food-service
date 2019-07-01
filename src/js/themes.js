@@ -16,25 +16,24 @@ const lightTheme = {
     icon: 'wb_sunny',
 };
 
-const previousTheme = localStorage.getItem('theme');
-
-// if (previousTheme === darkTheme.theme) {
-//   // switchTheme(darkTheme.theme);
-// // } else {
-// //   switchTheme(lightTheme.theme);
-// refs.bodyTheme.classList.add(darkTheme.theme)
-// }
 
 refs.themeSwitchButton.addEventListener('click', handleSwitchTheme);
 
 function handleSwitchTheme() {
   if (refs.bodyTheme.classList.toggle(darkTheme.theme)) {
     refs.toolbarIconSwitch.textContent = lightTheme.icon;
-    localStorage.setItem('theme', 'dark');
+    localStorage.setItem('settings', JSON.stringify(darkTheme));
     return;
   }
   refs.bodyTheme.classList.remove(lightTheme.theme);
   refs.toolbarIconSwitch.textContent = darkTheme.icon;
-  localStorage.setItem('theme', 'light');
+  localStorage.setItem('settings', JSON.stringify(lightTheme));
 };
 
+
+
+const savedSettings = localStorage.getItem('settings');
+const parsedSettings = JSON.parse(savedSettings);
+
+body.classList.add(parsedSettings.bodyClassList);
+toolbarIconSwitch.textContent = parsedSettings.icon;
