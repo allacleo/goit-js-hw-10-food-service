@@ -35,5 +35,5 @@ function handleSwitchTheme() {
 const savedSettings = localStorage.getItem('settings');
 const parsedSettings = JSON.parse(savedSettings);
 
-body.classList.add(parsedSettings.bodyClassList);
-toolbarIconSwitch.textContent = parsedSettings.icon;
+refs.bodyTheme.classList.add(parsedSettings.theme);
+refs.toolbarIconSwitch.textContent = parsedSettings.icon;
