@@ -21,12 +21,12 @@ refs.themeSwitchButton.addEventListener('click', handleSwitchTheme);
 
 function handleSwitchTheme() {
   if (refs.bodyTheme.classList.toggle(darkTheme.theme)) {
-    refs.toolbarIconSwitch.textContent = lightTheme.icon;
+    refs.toolbarIconSwitch.textContent = darkTheme.icon;
     localStorage.setItem('settings', JSON.stringify(darkTheme));
     return;
   }
   refs.bodyTheme.classList.remove(lightTheme.theme);
-  refs.toolbarIconSwitch.textContent = darkTheme.icon;
+  refs.toolbarIconSwitch.textContent = lightTheme.icon;
   localStorage.setItem('settings', JSON.stringify(lightTheme));
 };
 
